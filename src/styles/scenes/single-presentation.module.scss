@@ -1,0 +1,29 @@
+@import "@styles/settings/__settings";
+
+$single-source-screen-width: 1792px;
+$single-source-screen-height: 1120px;
+$single-ratio-multiplier: $single-source-screen-width / $single-source-screen-height;
+
+$single-screen-height: $scene-height - $scene-footer-height - $scene-margin;
+
+.singlePresentation {
+  display: flex;
+}
+
+.singlePresentationStage {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.singlePresentationScreen {
+  width: $single-screen-height * $single-ratio-multiplier;
+  height: $single-screen-height;
+  background-color: $color-primary;
+  margin: 0 auto;
+}
+
+.singlePresentationSidebar {
+  width: $scene-sidebar-width;
+  height: 100%;
+  margin-left: $scene-margin;
+}

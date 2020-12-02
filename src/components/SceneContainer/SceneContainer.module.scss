@@ -1,0 +1,35 @@
+@import "@styles/settings/__settings";
+
+.SceneContainer {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: $scene-width;
+  height: $scene-height;
+  background-color: $color-blue-900;
+  background-size: cover;
+  background-image: url('../../images/Background.jpg');
+  padding: 0;
+}
+
+.SceneContainerBody {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.SceneContainerFooter {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: $scene-footer-height;
+  width: $scene-width;
+  padding: 0 2rem 2rem;
+}
+
+.SceneContainerFooterCosmo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
