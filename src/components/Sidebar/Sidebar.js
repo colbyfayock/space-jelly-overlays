@@ -6,7 +6,7 @@ const Sidebar = ({ guests = [], cameraSpan = 1}) => {
   return (
     <div className={styles.sidebar}>
       {guests.map((guest) => {
-        return <CameraContainer key={guest.name} guest={guest} span={cameraSpan} />;
+        return <CameraContainer className={styles.sidebarCameraContainer} key={guest.name} guest={guest} span={cameraSpan} />;
       })}
     </div>
   )

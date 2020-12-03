@@ -5,3 +5,13 @@
   height: 100%;
   margin-left: $scene-margin;
 }
+
+.sidebarCameraContainer {
+
+  margin-bottom: $scene-margin;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+}

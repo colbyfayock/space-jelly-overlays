@@ -7,18 +7,12 @@ import SceneContainer from '@components/SceneContainer';
 import styles from '@styles/scenes/multi-discussion.module.scss'
 
 
-export default function Single({ frontMatter }) {
+export default function MultiDiscussion({ frontMatter }) {
   return (
     <SceneContainer className={styles.multiDiscussion}>
-      <div className={styles.multiDiscussionStage}>
-        <div className={styles.multiDiscussionScreen} />
-      </div>
-
-      <div className={styles.multiDiscussionSidebar}>
-        {frontMatter.guests.map((guest) => {
-          return <CameraContainer key={guest.name} guest={guest} span={1} />;
-        })}
-      </div>
+      {frontMatter.guests.map((guest) => {
+        return <CameraContainer className={styles.multiDiscussionCameraContainer} key={guest.name} guest={guest} size="large" span={1} />;
+      })}
     </SceneContainer>
   );
 }

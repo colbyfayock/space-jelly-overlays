@@ -3,9 +3,15 @@ import { FaTwitter } from 'react-icons/fa';
 
 import styles from './CameraContainer.module.scss';
 
-export default function CameraContainer({ guest, span = 1 }) {
+export default function CameraContainer({ className, guest, size = 'medium', span = 1 }) {
+  let cameraContainerClassName = styles.CameraContainer;
+
+  if ( className ) {
+    cameraContainerClassName = `${cameraContainerClassName} ${className}`;
+  }
+
   return (
-    <div className={styles.CameraContainer} data-span={span}>
+    <div className={cameraContainerClassName} data-size={size} data-span={span}>
       <div className={styles.CameraContainerCamera} />
       <p className={styles.CameraContainerLabel}>{guest.twitter}</p>
     </div>

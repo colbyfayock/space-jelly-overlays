@@ -2,24 +2,35 @@
 @import "@styles/util/__util";
 
 $camera-container-label-height: 50px;
-$camera-container-width: $scene-sidebar-camera-width;
-$camera-container-height: $scene-sidebar-camera-height;
-$camera-container-height-span2: $camera-container-height * 2;
+$camera-container-medium-width: $scene-sidebar-camera-width;
+$camera-container-medium-height: $scene-sidebar-camera-height;
+$camera-container-medium-height-span2: $camera-container-medium-height * 2;
+
+$presentation-source-screen-width: 1792px;
+$presentation-source-screen-height: 1120px;
+$presentation-ratio-multiplier: $presentation-source-screen-width / $presentation-source-screen-height;
+
+$camera-container-large-buffer: 300px;
+$camera-container-large-height: $scene-height - $scene-footer-height - $scene-margin - $camera-container-label-height - $camera-container-large-buffer;
+$camera-container-large-width: $camera-container-large-height * $presentation-ratio-multiplier;
 
 .CameraContainer {
 
-  width: $camera-container-width;
-  height: $camera-container-height + $camera-container-label-height;
   background-color: $color-primary;
-  margin-bottom: $scene-margin;
   @include boxShadow();
 
-  &:last-child {
-    margin-bottom: 0;
+  &[data-size="medium"] {
+    width: $camera-container-medium-width;
+    height: $camera-container-medium-height + $camera-container-label-height;
+  }
+
+  &[data-size="large"] {
+    width: $camera-container-large-width;
+    height: $camera-container-large-height + $camera-container-label-height;
   }
 
   &[data-span="2"] {
-    height: $camera-container-height-span2 + $camera-container-label-height;
+    height: $camera-container-medium-height-span2 + $camera-container-label-height;
     @include boxShadow();
   }
 
@@ -27,16 +38,27 @@ $camera-container-height-span2: $camera-container-height * 2;
 
 .CameraContainerCamera {
 
-  width: $camera-container-width;
-  height: $camera-container-height;
+  width: $camera-container-medium-width;
+  height: $camera-container-medium-height;
+
+  [data-size="medium"] & {
+    width: $camera-container-medium-width;
+    height: $camera-container-medium-height;
+  }
+
+  [data-size="large"] & {
+    width: $camera-container-large-width;
+    height: $camera-container-large-height;
+  }
 
   [data-span="2"] & {
-    height: $camera-container-height-span2;
+    height: $camera-container-medium-height-span2;
   }
 
 }
 
 .CameraContainerLabel {
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,4 +71,5 @@ $camera-container-height-span2: $camera-container-height * 2;
   font-weight: bold;
   background-color: $color-teal;
   padding-bottom: 2px;
+
 }
