@@ -14,6 +14,10 @@ $camera-container-large-buffer: 300px;
 $camera-container-large-height: $scene-height - $scene-footer-height - $scene-margin - $camera-container-label-height - $camera-container-large-buffer;
 $camera-container-large-width: $camera-container-large-height * $presentation-ratio-multiplier;
 
+$camera-container-xlarge-buffer: 120px;
+$camera-container-xlarge-height: $scene-height - $scene-footer-height - $scene-margin - $camera-container-label-height - $camera-container-xlarge-buffer;
+$camera-container-xlarge-width: $camera-container-xlarge-height * $presentation-ratio-multiplier;
+
 .CameraContainer {
 
   background-color: $color-primary;
@@ -27,6 +31,11 @@ $camera-container-large-width: $camera-container-large-height * $presentation-ra
   &[data-size="large"] {
     width: $camera-container-large-width;
     height: $camera-container-large-height + $camera-container-label-height;
+  }
+
+  &[data-size="xlarge"] {
+    width: $camera-container-xlarge-width;
+    height: $camera-container-xlarge-height + $camera-container-label-height;
   }
 
   &[data-span="2"] {
@@ -49,6 +58,11 @@ $camera-container-large-width: $camera-container-large-height * $presentation-ra
   [data-size="large"] & {
     width: $camera-container-large-width;
     height: $camera-container-large-height;
+  }
+
+  [data-size="xlarge"] & {
+    width: $camera-container-xlarge-width;
+    height: $camera-container-xlarge-height;
   }
 
   [data-span="2"] & {
