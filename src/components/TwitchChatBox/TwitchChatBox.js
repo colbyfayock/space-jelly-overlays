@@ -16,6 +16,14 @@ const testMessages = [
     user: 'colbyfayock',
     text: 'three'
   },
+  {
+    user: 'colbyfayock',
+    text: 'four'
+  },
+  {
+    user: 'colbyfayock',
+    text: 'five'
+  },
 ]
 
 export default function TwitchChatBox({ messages }) {
