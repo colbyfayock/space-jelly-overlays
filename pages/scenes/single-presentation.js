@@ -58,8 +58,6 @@ export default function Single({ frontMatter, streamDetails }) {
     }
   }, [event, current, stale, setStale, setCurrent]);
 
-  console.log('frontMatter.guests', frontMatter.guests)
-
   return (
     <SceneContainer className={styles.singlePresentation}>
       {!stale &&
@@ -75,7 +73,7 @@ export default function Single({ frontMatter, streamDetails }) {
       </div>
       <div className={styles.singlePresentationSidebar}>
         {frontMatter.guests.map((guest) => {
-          return <CameraContainer key={guest.name} guest={guest} />;
+          return <CameraContainer key={guest.name} guest={guest} span={2} />;
         })}
       </div>
 

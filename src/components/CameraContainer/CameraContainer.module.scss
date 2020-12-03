@@ -1,17 +1,30 @@
 @import "@styles/settings/__settings";
 
 $camera-container-label-height: 50px;
+$camera-container-width: $scene-sidebar-width;
+$camera-container-height: $scene-sidebar-width;
 
 .CameraContainer {
-  width: $scene-sidebar-width;
-  height: $scene-sidebar-width + $camera-container-label-height;
+
+  width: $camera-container-width;
+  height: $camera-container-height + $camera-container-label-height;
+
+  &[data-span="2"] {
+    height: $camera-container-height * 2 + $camera-container-label-height
+  }
 
 }
 
 .CameraContainerCamera {
+
   width: 100%;
   height: $scene-sidebar-width;
   background-color: $color-primary;
+
+  [data-span="2"] & {
+    height: $camera-container-height * 2 + $camera-container-label-height
+  }
+
 }
 
 .CameraContainerLabel {

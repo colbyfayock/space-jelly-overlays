@@ -5,6 +5,7 @@ $single-source-screen-height: 1120px;
 $single-ratio-multiplier: $single-source-screen-width / $single-source-screen-height;
 
 $single-screen-height: $scene-height - $scene-footer-height - $scene-margin;
+$single-screen-width: $single-screen-height * $single-ratio-multiplier;
 
 .singlePresentation {
   display: flex;
@@ -16,10 +17,36 @@ $single-screen-height: $scene-height - $scene-footer-height - $scene-margin;
 }
 
 .singlePresentationScreen {
-  width: $single-screen-height * $single-ratio-multiplier;
+
+  position: relative;
+  z-index: 1;
+  width: $single-screen-width;
   height: $single-screen-height;
-  background-color: $color-primary;
   margin: 0 auto;
+
+  &:before,
+  &:after {
+    display: block;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    content: '';
+    width: $single-screen-width;
+    height: $single-screen-height;
+  }
+
+  &:before {
+    z-index: 1;
+    background-color: $color-primary;
+  }
+
+  &:after {
+    top: 5px;
+    left: 5px;
+    background-color: #2E2FE2;
+  }
+
 }
 
 .singlePresentationSidebar {
