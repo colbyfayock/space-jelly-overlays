@@ -11,7 +11,6 @@ module.exports = withPlugins(
       CHANNEL: process.env.TWITCH_CHANNEL,
       CLIENT_ID: process.env.TWITCH_CLIENT_ID,
       ACCESS_TOKEN: process.env.TWITCH_ACCESS_TOKEN,
-      REFRESH_TOKEN: process.env.TWITCH_REFRESH_TOKEN,
       CALLBACK_URL: process.env.CALLBACK_URL,
       PUBNUB_PUBLISH_KEY: process.env.PUBNUB_PUBLISH_KEY,
       PUBNUB_SUBSCRIBE_KEY: process.env.PUBNUB_SUBSCRIBE_KEY,

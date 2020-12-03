@@ -5,20 +5,20 @@ import SceneContainer from '@components/SceneContainer';
 import Presentation from '@components/Presentation';
 import Sidebar from '@components/Sidebar';
 
-import styles from '@styles/scenes/single-presentation.module.scss'
+import styles from '@styles/scenes/multi-presentation.module.scss'
 
 
-export default function SinglePresentation({ frontMatter }) {
+export default function MultiPresentation({ frontMatter }) {
   return (
-    <SceneContainer className={styles.singlePresentation}>
+    <SceneContainer className={styles.multiPresentation}>
       <Presentation />
-      <Sidebar guests={frontMatter.guests} cameraSpan={2} />
+      <Sidebar guests={frontMatter.guests} cameraSpan={1} />
     </SceneContainer>
   );
 }
 
 export async function getStaticProps() {
-  const path = './src/scenes/single-presentation.mdx';
+  const path = './src/scenes/multi-presentation.mdx';
   const mdxSource = await fs.readFile(path);
   const { data } = matter(mdxSource);
 
