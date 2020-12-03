@@ -8,16 +8,16 @@ $single-ratio-multiplier: $single-source-screen-width / $single-source-screen-he
 $single-screen-height: $scene-height - $scene-footer-height - $scene-margin;
 $single-screen-width: $single-screen-height * $single-ratio-multiplier;
 
-.singlePresentation {
+.multiDiscussion {
   display: flex;
 }
 
-.singlePresentationStage {
+.multiDiscussionStage {
   flex-grow: 1;
   justify-content: center;
 }
 
-.singlePresentationScreen {
+.multiDiscussionScreen {
   width: $single-screen-width;
   height: $single-screen-height;
   background-color: $color-primary;
@@ -25,7 +25,7 @@ $single-screen-width: $single-screen-height * $single-ratio-multiplier;
   @include boxShadow();
 }
 
-.singlePresentationSidebar {
+.multiDiscussionSidebar {
   width: $scene-sidebar-width;
   height: 100%;
   margin-left: $scene-margin;

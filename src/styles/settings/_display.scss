@@ -3,5 +3,9 @@ $scene-height: 1080px;
 $scene-margin: 20px;
 
 $scene-footer-height: 150px;
+$scene-footer-cosmo-width: 350px;
+$scene-footer-component-height: 6rem;
 
-$scene-sidebar-width: 285px;
+$scene-sidebar-width: 412px;
+$scene-sidebar-camera-width: $scene-sidebar-width;
+$scene-sidebar-camera-height: $scene-sidebar-width * .75;

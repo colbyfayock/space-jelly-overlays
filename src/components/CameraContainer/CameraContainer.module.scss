@@ -1,28 +1,37 @@
 @import "@styles/settings/__settings";
+@import "@styles/util/__util";
 
 $camera-container-label-height: 50px;
-$camera-container-width: $scene-sidebar-width;
-$camera-container-height: $scene-sidebar-width;
+$camera-container-width: $scene-sidebar-camera-width;
+$camera-container-height: $scene-sidebar-camera-height;
+$camera-container-height-span2: $camera-container-height * 2;
 
 .CameraContainer {
 
   width: $camera-container-width;
   height: $camera-container-height + $camera-container-label-height;
+  background-color: $color-primary;
+  margin-bottom: $scene-margin;
+  @include boxShadow();
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   &[data-span="2"] {
-    height: $camera-container-height * 2 + $camera-container-label-height
+    height: $camera-container-height-span2 + $camera-container-label-height;
+    @include boxShadow();
   }
 
 }
 
 .CameraContainerCamera {
 
-  width: 100%;
-  height: $scene-sidebar-width;
-  background-color: $color-primary;
+  width: $camera-container-width;
+  height: $camera-container-height;
 
   [data-span="2"] & {
-    height: $camera-container-height * 2 + $camera-container-label-height
+    height: $camera-container-height-span2;
   }
 
 }
@@ -31,6 +40,8 @@ $camera-container-height: $scene-sidebar-width;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 2;
   width: 100%;
   height: $camera-container-label-height;
   color: white;
