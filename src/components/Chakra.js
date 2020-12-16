@@ -18,9 +18,9 @@ export function Chakra({ children, cookies = '', evaluateThemeLazily }) {
       storageManager={cookieStorageManager(cookies)}
     >
       <SEO
-        title="Nextjs + MDX Starter pack"
-        description="This is an opinionated way to handle MDX from multiple sources in a Next project with some help styling from ChakraUI"
-        url="www.whatever.com"
+        title="Space Jelly Overlays"
+        description="My super cool streaming overlays!"
+        url="https://www.colbyfayock.com"
         ogImage={{
           url: 'www.whatever.com',
           title: 'OG Image title',
@@ -29,8 +29,8 @@ export function Chakra({ children, cookies = '', evaluateThemeLazily }) {
           siteName: 'Your site name',
         }}
         twitter={{
-          handle: '@domitriusclark',
-          site: 'https://twitter.com/domitriusclark',
+          handle: '@colbyfayock',
+          site: 'https://twitter.com/colbyfayock',
         }}
       />
       <Navbar />
