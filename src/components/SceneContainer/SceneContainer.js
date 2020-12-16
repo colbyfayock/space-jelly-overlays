@@ -70,7 +70,7 @@ export default function SceneContainer({ children, className, ...rest }) {
         {children}
       </div>
       <div className={styles.SceneContainerFooter}>
-        <SpaceJelly />
+        <SpaceJelly theme="christmas" />
         <TwitchChatBox messages={messages} />
         <div className={styles.SceneContainerFooterDiscord}>
           <FaDiscord />
@@ -80,7 +80,7 @@ export default function SceneContainer({ children, className, ...rest }) {
           </p>
         </div>
         <div className={styles.SceneContainerFooterCosmo}>
-          <Cosmo />
+          <Cosmo theme="christmas" />
         </div>
       </div>
       {!stale &&

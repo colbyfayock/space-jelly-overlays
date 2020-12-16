@@ -1,6 +1,7 @@
 @import "@styles/settings/__settings";
 @import "@styles/util/__util";
 
+$presentation-background: $color-primary !default;
 $presentation-source-screen-width: 1792px;
 $presentation-source-screen-height: 1120px;
 $presentation-ratio-multiplier: $presentation-source-screen-width / $presentation-source-screen-height;
@@ -17,7 +18,7 @@ $presentation-screen-width: $presentation-screen-height * $presentation-ratio-mu
 .presentationScreen {
   width: $presentation-screen-width;
   height: $presentation-screen-height;
-  background-color: $color-primary;
+  background-color: $presentation-background;
   margin: 0 auto;
   @include boxShadow();
 }

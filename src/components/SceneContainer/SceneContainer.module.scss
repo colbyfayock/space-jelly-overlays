@@ -1,15 +1,18 @@
 @import "@styles/settings/__settings";
 @import "@styles/util/__util";
 
+$component-discord-link-foreground: $color-deep-blue !default;
+$component-discord-link-background: $color-secondary !default;
+
 .SceneContainer {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   width: $scene-width;
   height: $scene-height;
-  background-color: $color-deep-blue;
+  background-color: $scene-background-color;
   background-size: cover;
-  background-image: url('../../images/Background.jpg');
+  background-image: $scene-background-image;
   padding: 0;
 }
 
@@ -39,12 +42,12 @@
   height: $scene-footer-component-height;
   color: white;
   font-size: 1.8em;
-  background-color: $color-secondary;
+  background-color: $component-discord-link-background;
   padding: 0 1.6rem 0 1.4rem;
   @include boxShadow();
 
   svg {
-    color: $color-deep-blue;
+    color: $component-discord-link-foreground;
     font-size: 1.8em;
     margin-right: .2em;
   }
