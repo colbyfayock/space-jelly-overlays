@@ -2,7 +2,9 @@
 @import "@styles/util/__util";
 
 $camera-container-background: $color-primary !default;
-$camera-container-label-background: $color-teal !default;
+$camera-container-label-foreground: white !default;
+$camera-container-label-background1: $color-teal !default;
+$camera-container-label-background2: $color-teal !default;
 
 $camera-container-label-height: 50px;
 $camera-container-medium-width: $scene-sidebar-camera-width;
@@ -85,10 +87,14 @@ $camera-container-xlarge-width: $camera-container-xlarge-height * $presentation-
   z-index: 2;
   width: 100%;
   height: $camera-container-label-height;
-  color: white;
+  color: $camera-container-label-foreground;
   font-size: 1.4em;
   font-weight: bold;
-  background-color: $camera-container-label-background;
+  background-color: $camera-container-label-background1;
   padding-bottom: 2px;
+
+  .CameraContainer:nth-child(2) & {
+    background-color: $camera-container-label-background2;
+  }
 
 }

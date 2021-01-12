@@ -17,6 +17,8 @@ const CHAT_COMMANDS = {
 
 const ALERT_TIMER = 4000;
 
+const ACTIVE_THEME = 'colbyashimaru';
+
 export default function SceneContainer({ children, className, ...rest }) {
   let sceneClassName = styles.SceneContainer
 
@@ -70,7 +72,7 @@ export default function SceneContainer({ children, className, ...rest }) {
         {children}
       </div>
       <div className={styles.SceneContainerFooter}>
-        <SpaceJelly theme="christmas" />
+        <SpaceJelly theme={ACTIVE_THEME} />
         <TwitchChatBox messages={messages} />
         <div className={styles.SceneContainerFooterDiscord}>
           <FaDiscord />
@@ -80,7 +82,7 @@ export default function SceneContainer({ children, className, ...rest }) {
           </p>
         </div>
         <div className={styles.SceneContainerFooterCosmo}>
-          <Cosmo theme="christmas" />
+          <Cosmo theme={ACTIVE_THEME} />
         </div>
       </div>
       {!stale &&

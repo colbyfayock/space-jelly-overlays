@@ -3,14 +3,32 @@
 
 // Theme
 
-$component-shadow-box-color: #511313;
-$component-twitch-chat-background: #8D0C0E;
-$component-discord-link-foreground: #043300;
-$component-discord-link-background: #0F8805;
+// Christmas
 
-$presentation-background: #8D0C0E;
-$camera-container-background: #8D0C0E;
-$camera-container-label-background: #0F8805;
+// $component-shadow-box-color: #511313;
+// $component-twitch-chat-background: #8D0C0E;
+// $component-discord-link-foreground: #043300;
+// $component-discord-link-background: #0F8805;
 
-$scene-background-color: #511313;
-$scene-background-image: url('../../images/Background-christmas.jpg');
+// $presentation-background: #8D0C0E;
+// $camera-container-background: #8D0C0E;
+// $camera-container-label-background: #0F8805;
+
+// $scene-background-color: #511313;
+// $scene-background-image: url('../../images/Background-christmas.jpg');
+
+// Colbyashi Maru
+
+$component-shadow-box-color: transparent;
+$component-twitch-chat-background: black;
+$component-discord-link-foreground: #192E4E;
+$component-discord-link-background: #5598FA;
+
+$presentation-background: black;
+$camera-container-background: black;
+$camera-container-label-foreground: black;
+$camera-container-label-background1: #89F7C6;
+$camera-container-label-background2: #FF93F1;
+
+$scene-background-color: #000000;
+$scene-background-image: url('../../images/Background-ColbyashiMaru.jpg');
