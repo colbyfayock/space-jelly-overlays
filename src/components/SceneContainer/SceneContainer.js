@@ -8,6 +8,7 @@ import useChatListener from '@hooks/useChatListener';
 import SpaceJelly from '@components/SpaceJelly';
 import Cosmo from '@components/Cosmo';
 import TwitchChatBox from '@components/TwitchChatBox';
+import SceneTimer from '@components/SceneTimer';
 
 import styles from './SceneContainer.module.scss';
 
@@ -19,10 +20,15 @@ const ALERT_TIMER = 4000;
 
 const ACTIVE_THEME = 'colbyashimaru';
 
-export default function SceneContainer({ children, className, ...rest }) {
-  let sceneClassName = styles.SceneContainer
+export default function SceneContainer({
+  children,
+  className,
+  timer,
+  ...rest
+}) {
+  let sceneClassName = styles.SceneContainer;
 
-  if ( className ) {
+  if (className) {
     sceneClassName = `${sceneClassName} ${className}`;
   }
 
@@ -52,7 +58,6 @@ export default function SceneContainer({ children, className, ...rest }) {
     };
   }, [router.pathname]);
 
-
   React.useEffect(() => {
     if (current !== event) {
       clearTimeout(timeout.current);
@@ -68,9 +73,7 @@ export default function SceneContainer({ children, className, ...rest }) {
 
   return (
     <div className={sceneClassName} {...rest}>
-      <div className={styles.SceneContainerBody}>
-        {children}
-      </div>
+      <div className={styles.SceneContainerBody}>{children}</div>
       <div className={styles.SceneContainerFooter}>
         <SpaceJelly theme={ACTIVE_THEME} />
         <TwitchChatBox messages={messages} />
@@ -82,6 +85,7 @@ export default function SceneContainer({ children, className, ...rest }) {
           </p>
         </div>
         <div className={styles.SceneContainerFooterCosmo}>
+          {timer && <SceneTimer />}
           <Cosmo theme={ACTIVE_THEME} />
         </div>
       </div>
