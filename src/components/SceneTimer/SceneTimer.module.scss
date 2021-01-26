@@ -1,9 +1,84 @@
 @import "@styles/settings/__settings";
 
 .sceneTimer {
+  display: flex;
   position: absolute;
-  bottom: 50px;
-  color: white;
+  bottom: 54px;
   left: 0;
+  z-index: 999;
   width: 100%;
+  color: white;
+}
+
+.sceneTimerGameOver,
+.sceneTimerTime {
+  flex-shrink: 0;
+  background-color: $component-twitch-chat-background;
+  font-size: 1.5em;
+  line-height: 1;
+  font-weight: bold;
+  padding: .2em .4em;
+}
+
+.sceneTimerStage {
+  width: 100%;
+  flex-grow: 1;
+  background-color: #ffc506;
+}
+
+.sceneTimerBar {
+  width: 100%;
+  height: 100%;
+  background-color: #07cb9f;
+}
+
+.sceneTimerGameOver {
+  
+  width: 100%;
+  text-align: center;
+
+  span {
+    
+    margin-right: .5em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:nth-child(1) {
+      color: #07cb9f;
+      animation: gameOver1 2s steps(1) infinite;
+    }
+
+    &:nth-child(2) {
+      color: #ffc506;
+      animation: gameOver2 2s steps(1) infinite;
+    }
+
+  }
+
+}
+
+@keyframes gameOver1 {
+  0% {
+    color: #07cb9f;
+  }
+  50% {
+    color: #ffc506;
+  }
+  100% {
+    color: #07cb9f;
+  }
+}
+
+@keyframes gameOver2 {
+  0% {
+    color: #ffc506;
+  }
+  50% {
+    color: #07cb9f;
+  }
+  100% {
+    color: #ffc506;
+  }
 }

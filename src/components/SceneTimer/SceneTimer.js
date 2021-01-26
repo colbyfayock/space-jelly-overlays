@@ -22,9 +22,27 @@ const SceneTimer = () => {
 
   return (
     <div className={styles.sceneTimer}>
-      <div className={styles.sceneTimerTime}>
-        {Math.floor(secondsLeft / 60)}m {Math.ceil(secondsLeft % 60)}s
-      </div>
+      {secondsLeft > 0 && (
+        <>
+          <div className={styles.sceneTimerTime}>
+            {Math.floor(secondsLeft / 60)}m {Math.ceil(secondsLeft % 60)}s
+          </div>
+          <div className={styles.sceneTimerStage}>
+            <div
+              className={styles.sceneTimerBar}
+              style={{
+                width: `${(timeLeft / TIME_TO_COUNT) * 100}%`,
+              }}
+            />
+          </div>
+        </>
+      )}
+      {secondsLeft <= 0 && (
+        <div className={styles.sceneTimerGameOver}>
+          <span>GAME OVER</span>
+          <span>GAME OVER</span>
+        </div>
+      )}
     </div>
   );
 };
