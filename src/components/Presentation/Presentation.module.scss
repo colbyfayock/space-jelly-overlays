@@ -20,5 +20,5 @@ $presentation-screen-width: $presentation-screen-height * $presentation-ratio-mu
   height: $presentation-screen-height;
   background-color: $presentation-background;
   margin: 0 auto;
-  @include boxShadow();
+  // @include boxShadow();
 }
