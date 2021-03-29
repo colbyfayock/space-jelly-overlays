@@ -1,24 +1,105 @@
 import { useRef, useState, useEffect } from 'react';
+import useSound from 'use-sound';
 
 import styles from './SceneTimer.module.scss';
+
+import warpbangSfx from '@audio/warpbang.mp3';
+import distressBeaconSfx from '@audio/distressbeacon.mp3';
+import doomSfx from '@audio/doom.mp3';
+import turboliftSfx from '@audio/turbolift.mp3';
+import triumphSfx from '@audio/triumph.mp3';
+import romComputerBeepSfx from '@audio/romulan_computerbeep.mp3';
+import tensionSfx from '@audio/tension.mp3';
 
 const TIME_TO_COUNT = 1000 * 60 * 60;
 
 const SceneTimer = () => {
+  const [playWarpbang] = useSound(warpbangSfx);
+  const [playDistressBeacon] = useSound(distressBeaconSfx);
+  const [playDoom] = useSound(doomSfx);
+  const [playTurboLift] = useSound(turboliftSfx);
+  const [playTriumph] = useSound(triumphSfx);
+  const [playRomComputerBeep] = useSound(romComputerBeepSfx);
+  const [playTension] = useSound(tensionSfx);
+
   const startTimeRef = useRef(Date.now());
   const [timeLeft, setTimeLeft] = useState(TIME_TO_COUNT);
 
   const secondsLeft = Math.floor(timeLeft / 1000);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const endTime = startTimeRef.current + TIME_TO_COUNT;
-      const timeToEnd = endTime - Date.now();
-      setTimeLeft(timeToEnd);
-    }, 1000);
+    const socket = new WebSocket(
+      'ws://space-jelly-twitch-bot.herokuapp.com/ws',
+    );
 
-    return () => clearInterval(interval);
+    // Connection opened
+    socket.addEventListener('open', function (event) {
+      socket.send('Hello Server!');
+    });
+
+    // Listen for messages
+    socket.addEventListener('message', function (event) {
+      const { data: message } = JSON.parse(event.data);
+      const { type, command, data } = message;
+      console.log('event', event);
+      if (type !== 'command') return;
+
+      if (command === 'timeleft') {
+        setTimeLeft(data.time);
+      } else if (command === 'cmstart') {
+        playWarpbang();
+      } else if (command === 'cmadd') {
+        console.log('add');
+        playTurboLift();
+      }
+    });
   }, []);
+
+  useEffect(() => {
+    const secondsLeft = timeLeft / 1000;
+    const secondsLeftFloor = Math.floor(secondsLeft);
+    const minutesLeft = secondsLeftFloor / 60;
+    const minutesLeftFloor = Math.floor(minutesLeft);
+
+    const distressIntervals = [45, 30, 15];
+    const tensionIntervals = [10];
+    const doomIntervals = [5];
+
+    if (secondsLeft < 1) {
+      playTriumph();
+      return;
+    }
+
+    if (distressIntervals.includes(minutesLeft)) {
+      playDistressBeacon();
+      return;
+    }
+
+    if (tensionIntervals.includes(minutesLeft)) {
+      playTension();
+      return;
+    }
+
+    if (doomIntervals.includes(minutesLeft)) {
+      playDoom();
+      return;
+    }
+
+    if (secondsLeftFloor < 11) {
+      playRomComputerBeep();
+      return;
+    }
+  }, [timeLeft]);
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     const endTime = startTimeRef.current + TIME_TO_COUNT;
+  //     const timeToEnd = endTime - Date.now();
+  //     setTimeLeft(timeToEnd);
+  //   }, 1000);
+
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <div className={styles.sceneTimer}>

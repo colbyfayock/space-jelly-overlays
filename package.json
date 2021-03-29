@@ -21,6 +21,7 @@
     "@mdnext/components": "^0.1.0",
     "@repeaterjs/react-hooks": "^0.1.1",
     "fast-glob": "^3.2.4",
+    "file-loader": "^6.2.0",
     "framer-motion": "^2.7.7",
     "gray-matter": "^4.0.2",
     "isomorphic-fetch": "^3.0.0",
@@ -35,8 +36,9 @@
     "react-icons": "^3.11.0",
     "sass": "^1.29.0",
     "tmi.js": "^1.5.0",
+    "url-loader": "^4.1.1",
     "use-cloudinary": "^4.0.2",
-    "use-sound": "^1.0.2"
+    "use-sound": "^2.0.1"
   },
   "devDependencies": {
     "husky": "^4.2.5",

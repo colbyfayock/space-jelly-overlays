@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useToast } from '@chakra-ui/core';
 import { FaDiscord } from 'react-icons/fa';
+import ws from 'ws';
 
 import useEvent from '@hooks/useEvent';
 import useChatListener from '@hooks/useChatListener';
