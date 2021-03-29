@@ -13,14 +13,16 @@ import tensionSfx from '@audio/tension.mp3';
 
 const TIME_TO_COUNT = 1000 * 60 * 60;
 
+const audioSettings = { volume: 0.25 };
+
 const SceneTimer = () => {
-  const [playWarpbang] = useSound(warpbangSfx);
-  const [playDistressBeacon] = useSound(distressBeaconSfx);
-  const [playDoom] = useSound(doomSfx);
-  const [playTurboLift] = useSound(turboliftSfx);
-  const [playTriumph] = useSound(triumphSfx);
-  const [playRomComputerBeep] = useSound(romComputerBeepSfx);
-  const [playTension] = useSound(tensionSfx);
+  const [playWarpbang] = useSound(warpbangSfx, audioSettings);
+  const [playDistressBeacon] = useSound(distressBeaconSfx, audioSettings);
+  const [playDoom] = useSound(doomSfx, audioSettings);
+  const [playTurboLift] = useSound(turboliftSfx, audioSettings);
+  const [playTriumph] = useSound(triumphSfx, audioSettings);
+  const [playRomComputerBeep] = useSound(romComputerBeepSfx, audioSettings);
+  const [playTension] = useSound(tensionSfx, audioSettings);
 
   const startTimeRef = useRef(Date.now());
   const [timeLeft, setTimeLeft] = useState(TIME_TO_COUNT);
@@ -41,7 +43,7 @@ const SceneTimer = () => {
     socket.addEventListener('message', function (event) {
       const { data: message } = JSON.parse(event.data);
       const { type, command, data } = message;
-      console.log('event', event);
+
       if (type !== 'command') return;
 
       if (command === 'timeleft') {
@@ -49,7 +51,6 @@ const SceneTimer = () => {
       } else if (command === 'cmstart') {
         playWarpbang();
       } else if (command === 'cmadd') {
-        console.log('add');
         playTurboLift();
       }
     });
@@ -90,16 +91,6 @@ const SceneTimer = () => {
       return;
     }
   }, [timeLeft]);
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     const endTime = startTimeRef.current + TIME_TO_COUNT;
-  //     const timeToEnd = endTime - Date.now();
-  //     setTimeLeft(timeToEnd);
-  //   }, 1000);
-
-  //   return () => clearInterval(interval);
-  // }, []);
 
   return (
     <div className={styles.sceneTimer}>
