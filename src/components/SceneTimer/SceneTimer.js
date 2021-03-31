@@ -13,7 +13,7 @@ import tensionSfx from '@audio/tension.mp3';
 
 const TIME_TO_COUNT = 1000 * 60 * 60;
 
-const audioSettings = { volume: 0.25 };
+const audioSettings = { volume: 0.1 };
 
 const SceneTimer = () => {
   const [playWarpbang] = useSound(warpbangSfx, audioSettings);
