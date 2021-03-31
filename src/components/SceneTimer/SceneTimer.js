@@ -31,7 +31,7 @@ const SceneTimer = () => {
 
   useEffect(() => {
     const socket = new WebSocket(
-      'ws://space-jelly-twitch-bot.herokuapp.com/ws',
+      'wss://space-jelly-twitch-bot.herokuapp.com/ws',
     );
 
     // Connection opened
