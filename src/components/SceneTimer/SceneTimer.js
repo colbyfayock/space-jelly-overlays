@@ -24,23 +24,25 @@ const SceneTimer = () => {
   const [playRomComputerBeep] = useSound(romComputerBeepSfx, audioSettings);
   const [playTension] = useSound(tensionSfx, audioSettings);
 
-  const startTimeRef = useRef(Date.now());
   const [timeLeft, setTimeLeft] = useState(TIME_TO_COUNT);
-
   const secondsLeft = Math.floor(timeLeft / 1000);
 
-  useEffect(() => {
-    const socket = new WebSocket(
-      'wss://space-jelly-twitch-bot.herokuapp.com/ws',
-    );
+  const socketRef = useRef(Date.now());
 
-    // Connection opened
-    socket.addEventListener('open', function (event) {
-      socket.send('Hello Server!');
+  function startSocket(location) {
+    socketRef.current = new WebSocket(location);
+
+    socketRef.current.addEventListener('open', function (event) {
+      socketRef.current.send('Hello Server!');
+      console.log('Socket open.');
     });
 
-    // Listen for messages
-    socket.addEventListener('message', function (event) {
+    socketRef.current.addEventListener('close', function (event) {
+      console.log('Socket closed, retrying in 5 seconds...');
+      setTimeout(() => startSocket(location), 5000);
+    });
+
+    socketRef.current.addEventListener('message', function (event) {
       const { data: message } = JSON.parse(event.data);
       const { type, command, data } = message;
 
@@ -54,6 +56,10 @@ const SceneTimer = () => {
         playTurboLift();
       }
     });
+  }
+
+  useEffect(() => {
+    startSocket('wss://space-jelly-twitch-bot.herokuapp.com/ws');
   }, []);
 
   useEffect(() => {
