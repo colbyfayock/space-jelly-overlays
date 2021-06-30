@@ -19,7 +19,8 @@ const CHAT_COMMANDS = {
 
 const ALERT_TIMER = 4000;
 
-const ACTIVE_THEME = 'colbyashimaru';
+const ACTIVE_THEME = 'default';
+// const ACTIVE_THEME = 'colbyashimaru';
 
 export default function SceneContainer({
   children,

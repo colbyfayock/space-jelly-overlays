@@ -1,5 +1,7 @@
 @import "@styles/settings/__settings";
 
+$component-twitch-chat-background: $color-deep-blue !default;
+
 .sceneTimer {
   display: flex;
   position: absolute;
@@ -33,12 +35,12 @@
 }
 
 .sceneTimerGameOver {
-  
+
   width: 100%;
   text-align: center;
 
   span {
-    
+
     margin-right: .5em;
 
     &:last-child {
